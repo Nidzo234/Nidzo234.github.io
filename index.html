@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1fedf1f948.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<script src="javascript.js"></script>
+<a href="#" class="top" id="krug">
+    <i class="fas fa-chevron-circle-up"></i>
+</a>
+<div class="nav">
+    <div class="nav_sreden">
+        <a href="https://www.finki.ukim.mk/" target="_blank"><img id="Logo" src="Images/logo_boja.png"></a>
+        <div id="sMeni" class="nav_skrieno_meni" >
+            <i id="closebtn" class="fas fa-times" onclick="closeNav()"></i>
+            <h5 style="margin-left: 60px; margin-top: 10px; color: white">Settings</h5>
+            <h4 style="margin-top: 15px">Dark mode</h4>
+            <hr>
+            <section id="sMeni-sod" style="text-align: center;">
+                <a href="#" style="text-decoration: none"><h4>Македонски</h4>
+                    <img src="Images/Flag-MK.jpg"></a>
+                <hr>
+                <a href="#" style="text-decoration: none">
+                    <h4>Англиски</h4>
+                    <img src="Images/Flag-UK.png"></a>
+                <hr>
+                <a href="#"><h4>Помош</h4></a>
+            </section>
+            <label id="kopce" style="display: none">
+                <div class="toggle-btn" id="_1st-toggle-btn">
+                    <input type="checkbox">
+                    <span></span>
+                </div>
+            </label>
+        </div>
+        <div class="kopce-meni" onclick="SkrienoMeni(); closeNav()"><i class="fas fa-bars"></i></div>
+        <div id="nav_meni" class="nav-boja">
+            <a href="#" onclick="closeSkrienoMeni()">Дома</a>
+            <a href="#novo">Новости</a>
+            <a href="#nast">Наставен кадар</a>
+            <a href="proekti.html">Проекти</a>
+            <a href="templejt.html">Темплејт</a>
+            <a><span onclick="openNav()"><i class="fas fa-user-cog" style="cursor: pointer"></i></span></a>
+        </div>
+    </div>
+
+</div>
+
+<div class="sreden" onclick="closeNav(); closeSkrienoMeni()">
+    <h1>ФИНКИ- роботика</h1>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="interval, pause">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="Images/pocetna.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="Images/img_snow_wide.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="Images/img_nature_wide.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="Images/img_mountains_wide.jpg" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="Images/pocetna.jpg" alt="First slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <script>
+        $('.carousel').carousel(
+            {
+                interval:3000
+            }
+        )
+    </script>
+
+    <h1 id="novo">Новости</h1>
+    <hr>
+    <div class="nastani-praksa">
+
+            <div class="praksa-kont">
+                <div style="text-align: center; margin-bottom: 40px"><h3>Пракса и <br>вработување</h3></div>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+                <a href="Novosti.html"><div class="praksaa">
+                    <div class="praksa-slika">
+                        <img src="Images/111.jpg">
+                    </div>
+                    <div class="praksa-tekst">
+                        <p>Летна пракса</p>
+                        <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                    </div>
+                </div></a>
+                <hr>
+
+            </div>
+
+        <div class="praksa-kont">
+            <div style="text-align: center; margin-bottom: 40px"><h3>Настани</h3></div>
+            <hr>
+            <a href="Novosti.html"><div class="praksaa">
+                <div class="praksa-slika">
+                    <h2>07</h2>
+                    <p>Септ</p>
+                </div>
+                <div class="praksa-tekst">
+                    <p>Натпревар по роботика</p>
+                    <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                </div>
+            </div></a>
+            <hr>
+            <a href="Novosti.html"><div class="praksaa">
+                <div class="praksa-slika">
+                    <h2>07</h2>
+                    <p>Септ</p>
+                </div>
+                <div class="praksa-tekst">
+                    <p>Натпревар по роботика</p>
+                    <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                </div>
+            </div></a>
+            <hr>
+            <a href="Novosti.html"><div class="praksaa">
+                <div class="praksa-slika">
+                    <h2>07</h2>
+                    <p>Септ</p>
+                </div>
+                <div class="praksa-tekst">
+                    <p>Натпревар по роботика</p>
+                    <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                </div>
+            </div></a>
+            <hr>
+            <a href="Novosti.html"><div class="praksaa">
+                <div class="praksa-slika">
+                    <h2>07</h2>
+                    <p>Септ</p>
+                </div>
+                <div class="praksa-tekst">
+                    <p>Натпревар по роботика</p>
+                    <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                </div>
+            </div></a>
+            <hr>
+            <a href="Novosti.html"><div class="praksaa">
+                <div class="praksa-slika">
+                    <h2>07</h2>
+                    <p>Септ</p>
+                </div>
+                <div class="praksa-tekst">
+                    <p>Натпревар по роботика</p>
+                    <section style="font-weight: normal; margin-top: -10px"><p><i class="fas fa-calendar-day"></i> 07.09.2021</p></section>
+                </div>
+            </div></a>
+            <hr>
+        </div>
+    </div>
+
+
+        <div class="novosti">
+            <div class="novosti-slika">
+                <a href="Novosti.html"><img src="Images/111.jpg"></a>
+            </div>
+            <div class="novosti-sodrzina">
+                <div class="novosti-naslov">
+                    <h3>Онлајн предавања на тема на дизајн на игри</h3>
+                </div>
+                <div class="novosti-opis">
+                    <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри. </p>
+                </div>
+                <div class="novosti-datum">
+                    <p style="display: inline-block"><i class="fas fa-calendar-day"></i> 06.09.2021</p>
+                    <a href="Novosti.html"><p class="poveke">Повеќе</p></a>
+                </div>
+            </div>
+        </div>
+    <div class="novosti">
+        <div class="novosti-slika">
+            <a href="Novosti.html"><img src="Images/111.jpg"></a>
+        </div>
+        <div class="novosti-sodrzina">
+            <div class="novosti-naslov">
+                <h3>Онлајн предавања на тема на дизајн на игри</h3>
+            </div>
+            <div class="novosti-opis">
+                <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри. </p>
+            </div>
+            <div class="novosti-datum">
+                <p style="display: inline-block"><i class="fas fa-calendar-day"></i> 06.09.2021</p>
+                <a href="Novosti.html"><p class="poveke">Повеќе</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="novosti">
+        <div class="novosti-slika">
+            <a href="Novosti.html"><img src="Images/111.jpg"></a>
+        </div>
+        <div class="novosti-sodrzina">
+            <div class="novosti-naslov">
+                <h3>Онлајн предавања на тема на дизајн на игри</h3>
+            </div>
+            <div class="novosti-opis">
+                <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри. </p>
+            </div>
+            <div class="novosti-datum">
+                <p style="display: inline-block"><i class="fas fa-calendar-day"></i> 06.09.2021</p>
+                <a href="Novosti.html"><p class="poveke">Повеќе</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="novosti">
+        <div class="novosti-slika">
+            <a href="Novosti.html"><img src="Images/111.jpg"></a>
+        </div>
+        <div class="novosti-sodrzina">
+            <div class="novosti-naslov">
+                <h3>Онлајн предавања на тема на дизајн на игри</h3>
+            </div>
+            <div class="novosti-opis">
+                <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри. </p>
+            </div>
+            <div class="novosti-datum">
+                <p style="display: inline-block"><i class="fas fa-calendar-day"></i> 06.09.2021</p>
+                <a href="Novosti.html"><p class="poveke">Повеќе</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="novosti">
+        <div class="novosti-slika">
+            <a href="Novosti.html"><img src="Images/111.jpg"></a>
+        </div>
+        <div class="novosti-sodrzina">
+            <div class="novosti-naslov">
+                <h3>Онлајн предавања на тема на дизајн на игри</h3>
+            </div>
+            <div class="novosti-opis">
+                <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри. </p>
+            </div>
+            <div id="nast" class="novosti-datum">
+                <p style="display: inline-block"><i class="fas fa-calendar-day"></i> 06.09.2021</p>
+                <a href="Novosti.html"><p class="poveke">Повеќе</p></a>
+            </div>
+        </div>
+    </div>
+
+        <hr>
+        <h1>Наставен кадар</h1>
+        <div id="karta_kont">
+            <div class="karta">
+                <div class="karta-slika">
+                    <img src="Images/Moja1.jpg">
+                </div>
+                <h2>Никола Јовановски</h2>
+                <h4>студент на</h4>
+                <h4>ФИНКИ</h4>
+                <section style="font-size: 1.8em">
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fas fa-envelope-square"></i>
+                    <div class="karta-kontakt"><a style="text-decoration: none" href="https://www.finki.ukim.mk/mk/staff-list/kadar/nastaven-kadar" target="_blank">Контакт</a></div>
+                </section>
+            </div>
+            <div class="karta">
+                <div class="karta-slika">
+                    <img src="Images/Moja1.jpg">
+                </div>
+                <h2>Никола Јовановски</h2>
+                <h4>студент на</h4>
+                <h4>ФИНКИ</h4>
+                <section style="font-size: 1.8em">
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fas fa-envelope-square"></i>
+                    <div class="karta-kontakt"><a style="text-decoration: none" href="https://www.finki.ukim.mk/mk/staff-list/kadar/nastaven-kadar" target="_blank">Контакт</a></div>
+                </section>
+            </div>
+            <div class="karta">
+                <div class="karta-slika">
+                    <img src="Images/Moja1.jpg">
+                </div>
+                <h2>Никола Јовановски</h2>
+                <h4>студент на</h4>
+                <h4>ФИНКИ</h4>
+                <section style="font-size: 1.8em">
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fas fa-envelope-square"></i>
+                    <div class="karta-kontakt"><a style="text-decoration: none" href="https://www.finki.ukim.mk/mk/staff-list/kadar/nastaven-kadar" target="_blank">Контакт</a></div>
+                </section>
+            </div>
+            <div class="karta">
+                <div class="karta-slika">
+                    <img src="Images/Moja1.jpg">
+                </div>
+                <h2>Никола Јовановски</h2>
+                <h4>студент на</h4>
+                <h4>ФИНКИ</h4>
+                <section style="font-size: 1.8em">
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-twitter-square"></i>
+                    <i class="fas fa-envelope-square"></i>
+                    <div class="karta-kontakt"><a style="text-decoration: none" href="https://www.finki.ukim.mk/mk/staff-list/kadar/nastaven-kadar" target="_blank">Контакт</a></div>
+                </section>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+<div class="fut">
+        <div class="fut-inf" id="fut-inf-levo">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1762.8900023126903!2d21.40870894350977!3d42.00422928382607!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33d56647e5b87264!2sFaculty%20of%20Computer%20Science%20%26%20Engineering!5e0!3m2!1sen!2smk!4v1631567699397!5m2!1sen!2smk" width="640" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="fut-inf">
+            <div class="fut-inf-sod">
+                <p><i class="fas fa-map-marker-alt"></i> АДРЕСА:<br>
+                    ул. Руѓер Бошковиќ 16, Пoштенски Фах 393,
+                    1000, Скопје, Република Северна Македонија</p>
+                <p><i class="fas fa-mail-bulk"></i> КОНТАКТ:<br>
+                    <a href="mailto:contact@finki.ukim.mk">contact@finki.ukim.mk</a></p>
+                <p><i class="fas fa-phone"></i> ТЕЛЕФОНСКИ БРОЈ:<br>
+                <a href="tel:+38923088292"></a>+389 23 088 292</p>
+            </div>
+            <div id="fut-inf-desno" class="fut-inf-sod" style="text-align: center">
+                <img id="logo2" src="Images/logo_boja.png">
+                <i id="prv" class="fab fa-facebook-f"></i>
+                <i id="vtor" class="fab fa-twitter"></i>
+                <i id="tret" class="fab fa-linkedin-in"></i>
+                <i id="cetvrt" class="fab fa-youtube"></i>
+            </div>
+        </div>
+</div>
+<div class="pod-fut">
+    <p>&copy 2021 by Nikola Jovanovski</p>
+</div>
+</body>
+</html>

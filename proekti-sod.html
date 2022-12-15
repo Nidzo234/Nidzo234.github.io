@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/1fedf1f948.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<script src="javascript.js"></script>
+<a href="#" class="top" id="krug">
+    <i class="fas fa-chevron-circle-up"></i>
+</a>
+<div class="nav">
+    <div class="nav_sreden">
+        <a href="https://www.finki.ukim.mk/" target="_blank"><img id="Logo" src="Images/logo_boja.png"></a>
+        <div id="sMeni" class="nav_skrieno_meni" >
+            <i id="closebtn" class="fas fa-times" onclick="closeNav()"></i>
+            <h5 style="margin-left: 60px; margin-top: 10px; color: white">Settings</h5>
+            <h4 style="margin-top: 15px">Dark mode</h4>
+            <hr>
+            <section id="sMeni-sod" style="text-align: center;">
+                <a href="#" style="text-decoration: none"><h4>Македонски</h4>
+                    <img src="Images/Flag-MK.jpg"></a>
+                <hr>
+                <a href="#" style="text-decoration: none">
+                    <h4>Англиски</h4>
+                    <img src="Images/Flag-UK.png"></a>
+                <hr>
+                <a href="#"><h4>Помош</h4></a>
+            </section>
+            <label id="kopce" style="display: none">
+                <div class="toggle-btn" id="_1st-toggle-btn">
+                    <input type="checkbox">
+                    <span></span>
+                </div>
+            </label>
+        </div>
+        <div class="kopce-meni" onclick="SkrienoMeni(); closeNav()"><i class="fas fa-bars"></i></div>
+        <div id="nav_meni" class="nav-boja">
+            <a href="index.html" onclick="closeSkrienoMeni()">Дома</a>
+            <a href="index.html#novo">Новости</a>
+            <a href="index.html#nast">Наставен кадар</a>
+            <a href="proekti.html">Проекти</a>
+            <a href="templejt.html">Темплејт</a>
+            <a><span onclick="openNav()"><i class="fas fa-user-cog" style="cursor: pointer"></i></span></a>
+        </div>
+    </div>
+
+</div>
+
+<div class="sreden" onclick="closeNav(); closeSkrienoMeni()">
+    <div class="proekti-naslov">
+        <h1>Роботика - проекти</h1>
+        <h1>Наслов за проектот</h1>
+        <p>Изработено од: Никола јовановски<br>14 септември, 2021</p>
+        <hr>
+        <section id="slika-proekti"><img src="Images/m1.jpg"></section>
+    </div>
+    <div class="proekti-tekst">
+        <h2>Општи информации</h2>
+        <p>ШТО Е ХАКАТОН ЗА ОТВОРЕНИ ПОДАТОЦИ?<br>
+
+            Фондацијата за интернет и општество - Метаморфозис во рамките на Проектот на УСАИД за граѓанско учество за првпат организира онлајн Хакатон за отворени податоци. Oвој четири дневен предизвик  има за цел да собере и поттикне млади, креативни и иновативни луѓе да изработат демо иновативни решенија со кои треба да ги доближат отворените податоци објавени од државните институции до граѓаните.
+
+
+
+            <br>
+            <img style="float: right; width: 350px; height: 350px" src="Images/m7.jpg">
+            <br>КОЈ МОЖЕ ДА СЕ ПРИЈАВИ?<br>
+
+            На настанот може да се пријават суденти и стартап компании како тимови кои имаат пасија да работат со обработка и прикажување на отворени податоци од различни области. Потребно е секој тим да биде составен од членови кои имаат познавања во развој на веб и/или мобилни апликации, графички дизајн и UX,  економија, бизнис и маркетинг. Тимовите треба да имаат минимум тројца членови и еден тим лидер.
+
+
+            <br><br>КОГА И КАДЕ СЕ СЛУЧУВА?<br>
+
+            Хакатонот за отворени податоци ќе се одржи од 17 до 20 мај 2021 година, а ќе се случува онлајн. Пријавувањето на тимовите ќе трае до 14-ти мај, 2021 година, 16:00 часот. Регистрацијата е на [следниот линк], а формуларот во име на тимот го пополнува тим лидерот.
+
+            Пријавените учесници ќе имаат можност да се запознаат со деталите и концептот на предизвикот на 17-ти мај, 2021 година на самиот почеток на хакатонот. Ветуваме дека нема да има големи изненадувања.
+
+            Работен јазик на Хакатонот е македонски.
+
+
+
+            <br><br>НАГРАДА?<br>
+
+            Најдобро пласираниот тим според гласањето на жирито составено од пет членови ќе добие 3 000 долари со кои треба своето демо решение да го надгради во функционална апликација која несомнено ќе може да се пофалат во своето портфолио.
+
+
+
+            <br><br>Доколку имате дополнителни прашања или нејаснотии пишете на hakaton@metamorphosis.org.mk</p>
+            <h2>Потребни делови за изработка</h2>
+            <ul>
+                <li>Серво мотор (опис и линк)</li>
+                <li>Дрво (опис и линк)</li>
+                <li>Кабли (опис и линк)</li>
+                <li>Arduino (опис и линк)</li>
+                <li>Лемилица (опис и линк)</li>
+            </ul>
+        <h2>Начин на изработка и потребно време</h2>
+
+        <p>ФИНКИ, во рамки на предметот Медиуми и Комуникации, заедно со Факултетот за Драмски уметности ќе бидат домаќини на на Шин Блум (Sean Bloom) и Марци Кампос (Martzi Campos) од Универзитетот на Јужна Калифорнија, кои ќе одржат отворени онлајн предавања на тема на дизајн на игри.<br><br>
+
+            Шин Блум и Марци Кампос се експерти од Лабораторијата за игри при Факултетот за драмски уметности од Универзитетот на Јужна Калифорнија, а нивното гостување е со поддршка на American Film Showcase и амбасадата на САД во Р.С. Македонија. Тие ќе зборуваат за карактери во игра и развој на нивоа во игри. Фокус ќе биде ставен на игри што креираат позитивен општествен импакт.</p>
+        <div style="text-align: center"><iframe  width="962" height="545" src="https://www.youtube.com/embed/fn3KWM1kuAw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        <h2>Слики</h2>
+        <div class="lightbox-gallery">
+            <div class="row photos">
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m1.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m1.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m2.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m2.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m3.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m3.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m4.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m4.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m5.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m5.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m6.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m6.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m1.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m1.jpg"></a></div>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="Images/m2.jpg" data-lightbox="photos"><img class="img-fluid" src="Images/m2.jpg"></a></div>
+
+            </div>
+        </div>
+        <h2>Планови</h2>
+        <p>- планови за идно подобрување на роботот</p>
+    </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+
+
+<div class="fut">
+    <div class="fut-inf" id="fut-inf-levo">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1762.8900023126903!2d21.40870894350977!3d42.00422928382607!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33d56647e5b87264!2sFaculty%20of%20Computer%20Science%20%26%20Engineering!5e0!3m2!1sen!2smk!4v1631567699397!5m2!1sen!2smk" width="640" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="fut-inf">
+        <div class="fut-inf-sod">
+            <p><i class="fas fa-map-marker-alt"></i> АДРЕСА:<br>
+                ул. Руѓер Бошковиќ 16, Пoштенски Фах 393,
+                1000, Скопје, Република Северна Македонија</p>
+            <p><i class="fas fa-mail-bulk"></i> КОНТАКТ:<br>
+                <a href="mailto:contact@finki.ukim.mk">contact@finki.ukim.mk</a></p>
+            <p><i class="fas fa-phone"></i> ТЕЛЕФОНСКИ БРОЈ:<br>
+                <a href="tel:+38923088292"></a>+389 23 088 292</p>
+        </div>
+        <div id="fut-inf-desno" class="fut-inf-sod" style="text-align: center">
+            <img id="logo2" src="Images/logo_boja.png">
+            <i id="prv" class="fab fa-facebook-f"></i>
+            <i id="vtor" class="fab fa-twitter"></i>
+            <i id="tret" class="fab fa-linkedin-in"></i>
+            <i id="cetvrt" class="fab fa-youtube"></i>
+        </div>
+    </div>
+</div>
+<div class="pod-fut">
+    <p>&copy 2021 by Nikola Jovanovski</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1fedf1f948.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        function getPageList(totalPages, page, maxLength){
+            function range(start, end){
+                return Array.from(Array(end - start + 1), (_, i) => i + start);
+            }
+
+            var sideWidth = maxLength < 9 ? 1 : 2;
+            var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+            var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+
+            if(totalPages <= maxLength){
+                return range(1, totalPages);
+            }
+
+            if(page <= maxLength - sideWidth - 1 - rightWidth){
+                return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+            }
+
+            if(page >= totalPages - sideWidth - 1 - rightWidth){
+                return range(1, sideWidth).concat(0, range(totalPages- sideWidth - 1 - rightWidth - leftWidth, totalPages));
+            }
+
+            return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+        }
+
+        $(function(){
+            var numberOfItems = $(".card-content .card").length;
+            var limitPerPage = 9;
+            var totalPages = Math.ceil(numberOfItems / limitPerPage);
+            var paginationSize = 7; //How many page elements visible in the pagination
+            var currentPage;
+
+            function showPage(whichPage){
+                if(whichPage < 1 || whichPage > totalPages) return false;
+
+                currentPage = whichPage;
+
+                $(".card-content .card").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+
+                $(".pagination li").slice(1, -1).remove();
+
+                getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                    $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                        .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+                        .attr({href: "javascript:void(0)"}).text(item || "...")).insertBefore(".next-page");
+                });
+
+                $(".previous-page").toggleClass("disable", currentPage === 1);
+                $(".next-page").toggleClass("disable", currentPage === totalPages);
+                return true;
+            }
+
+            $(".pagination").append(
+                $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Prev")),
+                $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({href: "javascript:void(0)"}).text("Next"))
+            );
+
+            $(".card-content").show();
+            showPage(1);
+
+            $(document).on("click", ".pagination li.current-page:not(.active)", function(){
+                return showPage(+$(this).text());
+            });
+
+            $(".next-page").on("click", function(){
+                return showPage(currentPage + 1);
+            });
+
+            $(".previous-page").on("click", function(){
+                return showPage(currentPage - 1);
+            });
+        });
+    </script>
+</head>
+<body>
+<script src="javascript.js"></script>
+<a href="#" class="top" id="krug">
+    <i class="fas fa-chevron-circle-up"></i>
+</a>
+
+<div id="_top" style="width: 100%; height: 0"></div>
+
+<div class="nav">
+    <div class="nav_sreden">
+        <a href="https://www.finki.ukim.mk/" target="_blank"><img id="Logo" src="Images/logo_boja.png"></a>
+        <div id="sMeni" class="nav_skrieno_meni" >
+            <i id="closebtn" class="fas fa-times" onclick="closeNav()"></i>
+            <h5 style="margin-left: 60px; margin-top: 10px; color: white">Settings</h5>
+            <h4 style="margin-top: 15px">Dark mode</h4>
+            <hr>
+            <section id="sMeni-sod" style="text-align: center;">
+                <a href="#" style="text-decoration: none"><h4>Македонски</h4>
+                    <img src="Images/Flag-MK.jpg"></a>
+                <hr>
+                <a href="#" style="text-decoration: none">
+                    <h4>Англиски</h4>
+                    <img src="Images/Flag-UK.png"></a>
+                <hr>
+                <a href="#"><h4>Помош</h4></a>
+            </section>
+            <label id="kopce" style="display: none">
+                <div class="toggle-btn" id="_1st-toggle-btn">
+                    <input type="checkbox">
+                    <span></span>
+                </div>
+            </label>
+        </div>
+        <div class="kopce-meni" onclick="SkrienoMeni(); closeNav()"><i class="fas fa-bars"></i></div>
+        <div id="nav_meni" class="nav-boja" style="margin-top: 40px">
+            <a href="index.html" onclick="closeSkrienoMeni()">Дома</a>
+            <a href="index.html#novo">Новости</a>
+            <a href="index.html#nast">Наставен кадар</a>
+            <a href="#">Проекти</a>
+            <a href="templejt.html">Темплејт</a>
+            <a><span onclick="openNav()"><i class="fas fa-user-cog" style="cursor: pointer"></i></span></a>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="sreden" onclick="closeNav(); closeSkrienoMeni()">
+    <div class="container">
+        <div class="card-content" style="display: none">
+
+            <div class="card">
+                <div class="card-image"><img src="Images/111.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m1.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m2.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m3.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m4.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m5.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m6.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/111.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/111.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m1.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m2.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m3.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m4.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m5.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m6.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/111.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/111.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m1.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m2.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image"><img src="Images/m3.jpg" alt=""></div>
+                <div class="card-info">
+                    <h3>Машина за цртање</h3>
+                    <section class="card-avtor">
+                        <p>Направено од:</p>
+                        <p>Никола Јовановски</p>
+                    </section>
+                    <p>Машина за цртање која работи преку UGS(Universal Gcode Sender). Како додатни програми при работа се користат и corelDRAW и inkscape.</p>
+                    <div class="more"><a href="proekti-sod.html">Повеќе</a></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="pagination" onclick="dogore()">
+            <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+            <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+            <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+            <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+        </div>
+    </div>
+
+    <script>
+        function dogore(){
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+
+</div>
+
+
+
+<div class="fut">
+    <div class="fut-inf" id="fut-inf-levo">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1762.8900023126903!2d21.40870894350977!3d42.00422928382607!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x33d56647e5b87264!2sFaculty%20of%20Computer%20Science%20%26%20Engineering!5e0!3m2!1sen!2smk!4v1631567699397!5m2!1sen!2smk" width="640" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="fut-inf">
+        <div class="fut-inf-sod">
+            <p><i class="fas fa-map-marker-alt"></i> АДРЕСА:<br>
+                ул. Руѓер Бошковиќ 16, Пoштенски Фах 393,
+                1000, Скопје, Република Северна Македонија</p>
+            <p><i class="fas fa-mail-bulk"></i> КОНТАКТ:<br>
+                <a href="mailto:contact@finki.ukim.mk">contact@finki.ukim.mk</a></p>
+            <p><i class="fas fa-phone"></i> ТЕЛЕФОНСКИ БРОЈ:<br>
+                <a href="tel:+38923088292"></a>+389 23 088 292</p>
+        </div>
+        <div id="fut-inf-desno" class="fut-inf-sod" style="text-align: center">
+            <img id="logo2" src="Images/logo_boja.png">
+            <i id="prv" class="fab fa-facebook-f"></i>
+            <i id="vtor" class="fab fa-twitter"></i>
+            <i id="tret" class="fab fa-linkedin-in"></i>
+            <i id="cetvrt" class="fab fa-youtube"></i>
+        </div>
+    </div>
+</div>
+<div class="pod-fut">
+    <p>&copy 2021 by Nikola Jovanovski</p>
+</div>
+</body>
+</html>
